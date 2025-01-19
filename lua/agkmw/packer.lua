@@ -17,7 +17,7 @@ return require('packer').startup(function(use)
         'rose-pine/neovim',
         as = 'rose-pine',
         config = function()
-            vim.cmd('colorscheme rose-pine')
+            vim.cmd.colorscheme('rose-pine')
         end
     })
 
@@ -38,18 +38,20 @@ return require('packer').startup(function(use)
         end 
     }
 
-    use {
-        'folke/tokyonight.nvim',
-        config = function()
-            vim.cmd.colorscheme("tokyonight")
-        end
-    }
-
     use {'nvim-treesitter/playground'}
 
     use {
         "ThePrimeagen/harpoon",
         branch = "harpoon2",
         requires = { {"nvim-lua/plenary.nvim"} }
+    }
+
+    use {'mbbill/undotree'}
+
+    use {
+        'folke/tokyonight.nvim',
+        config = function()
+            vim.cmd.colorscheme('tokyonight')
+        end
     }
 end)
