@@ -1,5 +1,4 @@
 require("agkmw.remap")
-print("hello from agkmw")
 vim.o.relativenumber = true
 vim.o.scrolloff = 8
 vim.o.expandtab = true
