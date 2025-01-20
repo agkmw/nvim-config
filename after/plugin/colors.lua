@@ -7,4 +7,4 @@ function ColorMyPencils(color, removeBg)
     end
 end
 
-ColorMyPencils('tokyonight-moon', true)
+ColorMyPencils('rose-pine', true)

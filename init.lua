@@ -1,3 +1,1 @@
 require("agkmw")
-print("hello")
-
