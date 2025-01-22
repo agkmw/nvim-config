@@ -1,3 +1,0 @@
---if vim.fn.has "win32" == 1 then -- only windows
-    --vim.g.undotree_DiffCommand = "~/AppData/Local/nvim/bin/diff.exe"
---end

@@ -50,7 +50,7 @@ vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 
 vim.keymap.set("n", "<leader>f", function()
     local filetype = vim.bo.filetype
-    if filetype == "javascript" or filetype == "typescript" or filetype == "html" then
+    if filetype == "javascript" or filetype == "typescript" or filetype == "json" or filetype == "html" or filetype == "css" then
         vim.cmd("!prettier --write %")
     else
         vim.lsp.but.format()

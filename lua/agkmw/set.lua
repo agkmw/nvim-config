@@ -1,5 +1,5 @@
 vim.opt.guicursor = ""
-vim.opt.cursorline = true
+-- vim.opt.cursorline = true
 
 vim.opt.nu = true
 vim.opt.relativenumber = true
@@ -15,7 +15,7 @@ vim.opt.wrap = false
 
 vim.opt.swapfile = false
 vim.opt.backup = false
-local home = os.getenv("HOME") or os.getenv("USERPROFILE") or "/tmp" 
+local home = os.getenv("HOME") or os.getenv("USERPROFILE") or "/tmp"
 vim.opt.undodir= home .. "/.vim/undodir"
 vim.opt.undofile = true
 
