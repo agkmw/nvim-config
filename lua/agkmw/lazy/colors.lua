@@ -1,5 +1,5 @@
 function ColorMyPencils(color)
-	color = color or "gruvbox"
+	color = color or "catppuccin-mocha"
 	vim.cmd.colorscheme(color)
 
 --	vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
@@ -14,6 +14,17 @@ end
 return{
     {
         "erikbackman/brightburn.vim",
+    },
+    {
+        "catppuccin/nvim",
+        name = "catppuccin",
+        priority = 1000,
+        config = function()
+            require("catppuccin").setup({
+                flavour = "mocha",
+                no_italic = true,
+            })
+        end,
     },
     {
         "folke/tokyonight.nvim",
@@ -65,7 +76,7 @@ return{
                 styles = {
                     -- Style to be applied to different syntax groups
                     -- Value is any valid attr-list value for `:help nvim_set_hl`
-                    comments = { italic = true },
+                    comments = { italic = false },
                     keywords = { italic = false },
                     -- Background styles. Can be "dark", "transparent" or "normal"
                     sidebars = "transparent", -- style for sidebars, see below

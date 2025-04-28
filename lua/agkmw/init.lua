@@ -35,6 +35,13 @@ autocmd({"BufWritePre"}, {
     command = [[%s/\s\+$//e]],
 })
 
+autocmd({"BufReadPost"}, {
+    pattern = "*",
+    callback = function ()
+        vim.opt.fileformat = "unix"
+    end,
+})
+
 --autocmd('BufEnter', {
 --    group = agkmw_group,
 --    callback = function()
