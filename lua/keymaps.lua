@@ -64,3 +64,7 @@ vim.keymap.set("n", "<S-s>", "<cmd>lnext<CR>zz", { desc = "Next location list it
 -- Make current file executable
 vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true, desc = "Make file executable" })
 
+-- Close current buffer
+vim.keymap.set("n", "<leader>bd", ":bd<CR>", { desc = "Close buffer" })
+vim.keymap.set("n", "<leader>w", ":w")
+vim.keymap.set("n", "<leader>q", ":q")
