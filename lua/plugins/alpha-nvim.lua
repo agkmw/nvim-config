@@ -402,8 +402,7 @@ function get_random_header()
       "       ⠀⠀⠀⠙⠛⠛⠋⠀⠀⠀⠀⠀⠀⠀⠀⠈⠙⠛⠛⠛⠛⠋⠉⠀⠀⠀⠀⠀⠀⠀⠀⠙⠛⠛⠋⠀⠀⠀       ",
     },
   }
-  -- return headers[math.random(#headers)]
-  return headers[#headers - 2]
+  return headers[math.random(#headers)]
 end
 
 return {

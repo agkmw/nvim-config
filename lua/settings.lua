@@ -41,3 +41,7 @@ vim.opt.fileformat = "unix"
 vim.opt.encoding = "utf-8"
 vim.opt.fileencoding = "utf-8"
 
+if vim.fn.has("win32") == 1 or vim.fn.has("win64") == 1 then
+  vim.o.shell = "pwsh.exe"
+  vim.o.shellcmdflag = "-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command"
+end

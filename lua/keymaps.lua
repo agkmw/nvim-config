@@ -4,6 +4,10 @@ vim.keymap.set("n", "<C-l>", "<C-w>l", { desc = "Move to right split" })
 vim.keymap.set("n", "<C-k>", "<C-w>k", { desc = "Move to upper split" })
 vim.keymap.set("n", "<C-j>", "<C-w>j", { desc = "Move to lower split" })
 
+vim.keymap.set("n", "<C-m>", "<C-w><S-t>", { desc = "Maximize the window" })
+vim.keymap.set("n", "<leader>t", "gt", { desc = "Move to another tab" })
+vim.keymap.set("n", "<leader>rw", "<C-w>r<C-w>w", { desc = "Rotate windows and switch focus" })
+
 -- Navigate through buffers
 vim.keymap.set("n", "<Tab>", "<cmd>BufferLineCycleNext<CR>", { desc = "Next buffer" })
 vim.keymap.set("n", "<S-Tab>", "<cmd>BufferLineCyclePrev<CR>", { desc = "Previous buffer" })
@@ -65,6 +69,26 @@ vim.keymap.set("n", "<S-s>", "<cmd>lnext<CR>zz", { desc = "Next location list it
 vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true, desc = "Make file executable" })
 
 -- Close current buffer
-vim.keymap.set("n", "<leader>bd", ":bd<CR>", { desc = "Close buffer" })
-vim.keymap.set("n", "<leader>w", ":w")
-vim.keymap.set("n", "<leader>q", ":q")
+vim.keymap.set("n", "<leader>ca", "<C-w>o", { desc = "Close all windows and focus on the current one" })
+vim.keymap.set("n", "<leader>cc", "<C-w>c", { desc = "Close window" })
+vim.keymap.set("n", "<leader>w", "<C-w>w", { desc = "Move to another window" })
+
+vim.keymap.set("t", "<Esc>", "<C-\\><C-n>", { desc = "Exit terminal to Normal mode" })
+vim.keymap.set("t", "<C-q>", "<Esc>", { desc = "Send Esc to terminal" })
+
+vim.keymap.set("n", "<leader>bdf", ":bd!<CR>", { desc = "Force close buffer" })
+
+vim.api.nvim_create_autocmd("TermOpen", {
+  group = vim.api.nvim_create_augroup("custom-term-open", { clear = true }),
+  callback = function()
+    vim.opt.number = false
+    vim.opt.relativenumber = false
+  end,
+})
+
+vim.keymap.set("n", "<leader>st", function()
+  vim.cmd.vnew()
+  vim.cmd.term()
+  vim.cmd.wincmd("J")
+  vim.api.nvim_win_set_height(0, 10)
+end)
