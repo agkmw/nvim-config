@@ -62,16 +62,16 @@ return {
       desc = "Harpoon: Open via Telescope",
     })
 
-    vim.keymap.set("n", "<S-h>", function() harpoon:list():select(1) end, {
+    vim.keymap.set("n", "<leader>1", function() harpoon:list():select(1) end, {
       desc = "Harpoon: Go to file 1",
     })
-    vim.keymap.set("n", "<S-j>", function() harpoon:list():select(2) end, {
+    vim.keymap.set("n", "<leader>2", function() harpoon:list():select(2) end, {
       desc = "Harpoon: Go to file 2",
     })
-    vim.keymap.set("n", "<S-k>", function() harpoon:list():select(3) end, {
+    vim.keymap.set("n", "<leader>3", function() harpoon:list():select(3) end, {
       desc = "Harpoon: Go to file 3",
     })
-    vim.keymap.set("n", "<S-l>", function() harpoon:list():select(4) end, {
+    vim.keymap.set("n", "<leader>4", function() harpoon:list():select(4) end, {
       desc = "Harpoon: Go to file 4",
     })
 

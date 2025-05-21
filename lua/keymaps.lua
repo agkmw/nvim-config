@@ -69,8 +69,8 @@ vim.keymap.set("n", "<S-s>", "<cmd>lnext<CR>zz", { desc = "Next location list it
 vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true, desc = "Make file executable" })
 
 -- Close current buffer
-vim.keymap.set("n", "<leader>ca", "<C-w>o", { desc = "Close all windows and focus on the current one" })
-vim.keymap.set("n", "<leader>cc", "<C-w>c", { desc = "Close window" })
+vim.keymap.set("n", "<leader>co", "<C-w>o", { desc = "Close all windows and focus on the current one" })
+vim.keymap.set("n", "<leader>cw", "<C-w>c", { desc = "Close window" })
 vim.keymap.set("n", "<leader>w", "<C-w>w", { desc = "Move to another window" })
 
 vim.keymap.set("t", "<Esc>", "<C-\\><C-n>", { desc = "Exit terminal to Normal mode" })
