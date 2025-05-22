@@ -5,6 +5,10 @@ return {
 	},
 	config = function()
 		local null_ls = require("null-ls")
+		local eslint = require("none-ls.diagnostics.eslint_d")
+		eslint.with({
+			extra_args = { "--config", "./eslint.config.mjs" },
+		})
 
 		null_ls.setup({
 			sources = {
@@ -14,7 +18,7 @@ return {
 				null_ls.builtins.formatting.black,
 				null_ls.builtins.formatting.isort,
 				null_ls.builtins.completion.spell,
-				require("none-ls.diagnostics.eslint_d"),
+				eslint,
 			},
 		})
 

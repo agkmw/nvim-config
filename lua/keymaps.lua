@@ -1,9 +1,33 @@
--- Navigate between splits
-vim.keymap.set("n", "<C-h>", "<C-w>h", { desc = "Move to left split" })
-vim.keymap.set("n", "<C-l>", "<C-w>l", { desc = "Move to right split" })
-vim.keymap.set("n", "<C-k>", "<C-w>k", { desc = "Move to upper split" })
-vim.keymap.set("n", "<C-j>", "<C-w>j", { desc = "Move to lower split" })
+vim.api.nvim_create_autocmd("LspAttach", {
+  callback = function(args)
+    local bufnr = args.bufnr
+    local opts = { buffer = bufnr }
 
+    vim.keymap.set("n", "<S-k>", vim.lsp.buf.hover, opts)
+    vim.keymap.set("i", "<C-h>", vim.lsp.buf.signature_help, opts)
+    vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+    vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts)
+    vim.keymap.set("n", "<leader>crn", vim.lsp.buf.rename, opts)
+    vim.keymap.set("n", "<leader>crf", vim.lsp.buf.references, opts)
+    vim.keymap.set("n", "<leader>vws", vim.lsp.buf.workspace_symbol, opts)
+    vim.keymap.set("n", "<leader>vds", vim.lsp.buf.document_symbol, opts)
+  end,
+})
+
+-- todo-comments
+vim.keymap.set("n", "]t", function()
+  require("todo-comments").jump_next()
+end, { desc = "Next todo comment" })
+
+vim.keymap.set("n", "[t", function()
+  require("todo-comments").jump_prev()
+end, { desc = "Previous todo comment" })
+
+-- Navigate between windows
+vim.keymap.set("n", "<C-h>", "<C-w>h", { desc = "Move to left window" })
+vim.keymap.set("n", "<C-l>", "<C-w>l", { desc = "Move to right window" })
+vim.keymap.set("n", "<C-k>", "<C-w>k", { desc = "Move to upper window" })
+vim.keymap.set("n", "<C-j>", "<C-w>j", { desc = "Move to lower window" })
 vim.keymap.set("n", "<C-m>", "<C-w><S-t>", { desc = "Maximize the window" })
 vim.keymap.set("n", "<leader>t", "gt", { desc = "Move to another tab" })
 vim.keymap.set("n", "<leader>rw", "<C-w>r<C-w>w", { desc = "Rotate windows and switch focus" })
@@ -13,7 +37,12 @@ vim.keymap.set("n", "<Tab>", "<cmd>BufferLineCycleNext<CR>", { desc = "Next buff
 vim.keymap.set("n", "<S-Tab>", "<cmd>BufferLineCyclePrev<CR>", { desc = "Previous buffer" })
 
 -- Replace the word under cursor
-vim.keymap.set("n", "<leader>s", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>", { desc = "Substitute word under cursor" })
+vim.keymap.set(
+  "n",
+  "<leader>s",
+  ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>",
+  { desc = "Substitute word under cursor" }
+)
 
 -- Yank from cursor to end of line (like D/C)
 vim.keymap.set("n", "Y", "yg$", { desc = "Yank to end of line" })
@@ -34,22 +63,19 @@ vim.keymap.set("n", "n", "nzzzv", { desc = "Next search result (centered)" })
 vim.keymap.set("n", "N", "Nzzzv", { desc = "Prev search result (centered)" })
 
 -- Paste over selection without losing register content
-vim.keymap.set("x", "<leader>p", "\"_dP", { desc = "Paste without yanking" })
+vim.keymap.set("x", "<leader>p", '"_dP', { desc = "Paste without yanking" })
 
 -- Yank to system clipboard
-vim.keymap.set("n", "<leader>y", "\"+y", { desc = "Yank to system clipboard" })
-vim.keymap.set("v", "<leader>y", "\"+y", { desc = "Yank to system clipboard" })
-vim.keymap.set("n", "<leader>Y", "\"+Y", { desc = "Yank line to system clipboard" })
+vim.keymap.set("n", "<leader>y", '"+y', { desc = "Yank to system clipboard" })
+vim.keymap.set("v", "<leader>y", '"+y', { desc = "Yank to system clipboard" })
+vim.keymap.set("n", "<leader>Y", '"+Y', { desc = "Yank line to system clipboard" })
 
 -- Delete to void register
-vim.keymap.set("v", "<leader>d", "\"_d", { desc = "Delete without yanking" })
-vim.keymap.set("v", "<leader>d", "\"_d", { desc = "Delete without yanking" })
+vim.keymap.set("n", "<leader>d", '"_d', { desc = "Delete without yanking" })
+vim.keymap.set("v", "<leader>d", '"_d', { desc = "Delete without yanking" })
 
 -- Escape insert mode
 vim.keymap.set("i", "<C-c>", "<Esc>", { desc = "Exit insert mode" })
-
--- Toggle Undotree
-vim.keymap.set("n", "<leader>u", ":UndotreeShow<CR>", { desc = "Toggle Undotree" })
 
 -- Disable Q
 vim.keymap.set("n", "Q", "<nop>", { desc = "Disable Ex mode" })
@@ -77,6 +103,7 @@ vim.keymap.set("t", "<Esc>", "<C-\\><C-n>", { desc = "Exit terminal to Normal mo
 vim.keymap.set("t", "<C-q>", "<Esc>", { desc = "Send Esc to terminal" })
 
 vim.keymap.set("n", "<leader>bdf", ":bd!<CR>", { desc = "Force close buffer" })
+vim.keymap.set("n", "<leader>bdn", ":bd<CR>", { desc = "Force close buffer" })
 
 vim.api.nvim_create_autocmd("TermOpen", {
   group = vim.api.nvim_create_augroup("custom-term-open", { clear = true }),

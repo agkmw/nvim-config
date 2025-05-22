@@ -8,7 +8,7 @@ return {
       no_italic = false,
       transparent_background = false,
       styles = {
-        comments = {},
+        comments = { "italic" },
         conditionals = { "italic" },
         loops = { "italic" },
         functions = {},

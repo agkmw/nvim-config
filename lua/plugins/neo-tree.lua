@@ -8,7 +8,7 @@ return {
   },
   lazy = false,
   config = function()
-    vim.keymap.set("n", "<leader>e", ":Neotree filesystem toggle left<CR>" , { desc = "Toggle Neo-tree" } )
+    vim.keymap.set("n", "<leader>e", ":Neotree filesystem toggle left<CR>" , { silent = true, desc = "Toggle Neo-tree" } )
 
     require("neo-tree").setup({
       close_if_last_window = true,
