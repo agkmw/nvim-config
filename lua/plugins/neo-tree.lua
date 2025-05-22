@@ -8,8 +8,6 @@ return {
   },
   lazy = false,
   config = function()
-    local builtin = require("telescope.builtin")
-
     vim.keymap.set("n", "<leader>e", ":Neotree filesystem toggle left<CR>" , { desc = "Toggle Neo-tree" } )
 
     require("neo-tree").setup({
@@ -23,7 +21,7 @@ return {
             },
           },
         },
-        width = 30,
+        width = 40,
       },
       filesystem = {
         follow_current_file = {

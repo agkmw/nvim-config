@@ -1,22 +1,6 @@
 math.randomseed(os.time())
 
-function dashboard_config()
-  local dashboard = require("alpha.themes.dashboard")
-  dashboard.section.header.val = get_random_header()
-  dashboard.section.buttons.val = get_buttons()
-  dashboard.section.footer.val = get_footer()
-  dashboard.config.layout = {
-    { type = "padding", val = 2 },
-    dashboard.section.header,
-    { type = "padding", val = 2 },
-    dashboard.section.buttons,
-    { type = "padding", val = 1 },
-    dashboard.section.footer,
-  }
-  require'alpha'.setup(dashboard.config)
-end
-
-function get_buttons()
+local function get_buttons()
   local dashboard = require("alpha.themes.dashboard")
   return {
     dashboard.button("e", "  New file",               ":tabnew<CR>"),
@@ -29,17 +13,17 @@ function get_buttons()
   }
 end
 
-function get_footer()
+local function get_footer()
   return "⚡ Neovim loaded successfully!"
 end
 
-function get_random_header()
+local function get_random_header()
   local headers = {
     {
       [[ ██╗    ██╗███████╗██╗      ██████╗ ██████╗ ███╗   ███╗███████╗ ]],
       [[ ██║    ██║██╔════╝██║     ██╔════╝██╔═══██╗████╗ ████║██╔════╝ ]],
       [[ ██║ █╗ ██║█████╗  ██║     ██║     ██║   ██║██╔████╔██║█████╗   ]],
-      [[ ██║███╗██║██╔══╝  ██║     ██║     ██║   ██║██║╚██╔╝██║██╔══╝   ]], 
+      [[ ██║███╗██║██╔══╝  ██║     ██║     ██║   ██║██║╚██╔╝██║██╔══╝   ]],
       [[ ╚███╔███╔╝███████╗███████╗╚██████╗╚██████╔╝██║ ╚═╝ ██║███████╗ ]],
       [[  ╚══╝╚══╝ ╚══════╝╚══════╝ ╚═════╝ ╚═════╝ ╚═╝     ╚═╝╚══════╝ ]],
     },
@@ -58,6 +42,23 @@ function get_random_header()
       [[        `$'                                                                 ]],
       [[         $                                                                  ]],
       [[         *                                                                  ]],
+    },
+    {
+      [[                                                                       ]],
+      [[                                                                       ]],
+      [[                                                                       ]],
+      [[                                                                       ]],
+      [[                                                                     ]],
+      [[       ████ ██████           █████      ██                     ]],
+      [[      ███████████             █████                             ]],
+      [[      █████████ ███████████████████ ███   ███████████   ]],
+      [[     █████████  ███    █████████████ █████ ██████████████   ]],
+      [[    █████████ ██████████ █████████ █████ █████ ████ █████   ]],
+      [[  ███████████ ███    ███ █████████ █████ █████ ████ █████  ]],
+      [[ ██████  █████████████████████ ████ █████ █████ ████ ██████ ]],
+      [[                                                                       ]],
+      [[                                                                       ]],
+      [[                                                                       ]],
     },
     {
       [[                                                                     ]],
@@ -402,7 +403,24 @@ function get_random_header()
       "       ⠀⠀⠀⠙⠛⠛⠋⠀⠀⠀⠀⠀⠀⠀⠀⠈⠙⠛⠛⠛⠛⠋⠉⠀⠀⠀⠀⠀⠀⠀⠀⠙⠛⠛⠋⠀⠀⠀       ",
     },
   }
-  return headers[math.random(#headers)]
+  -- return headers[math.random(#headers)]
+  return headers[7]
+end
+
+local function dashboard_config()
+  local dashboard = require("alpha.themes.dashboard")
+  dashboard.section.header.val = get_random_header()
+  dashboard.section.buttons.val = get_buttons()
+  dashboard.section.footer.val = get_footer()
+  dashboard.config.layout = {
+    { type = "padding", val = 2 },
+    dashboard.section.header,
+    { type = "padding", val = 2 },
+    dashboard.section.buttons,
+    { type = "padding", val = 1 },
+    dashboard.section.footer,
+  }
+  require'alpha'.setup(dashboard.config)
 end
 
 return {

@@ -45,3 +45,10 @@ if vim.fn.has("win32") == 1 or vim.fn.has("win64") == 1 then
   vim.o.shell = "pwsh.exe"
   vim.o.shellcmdflag = "-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command"
 end
+
+vim.diagnostic.enable = true
+vim.diagnostic.config({
+  virtual_text = true,
+  float = true,
+  update_in_insert = true,
+})
