@@ -5,4 +5,3 @@ return {
     triggers = { "<leader>" },
   },
 }
-

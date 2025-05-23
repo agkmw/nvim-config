@@ -1,8 +1,9 @@
 return {
-  'akinsho/bufferline.nvim', version = "*", 
-  dependencies = 'nvim-tree/nvim-web-devicons',
-  config = function() 
-    require("bufferline").setup{
+  "akinsho/bufferline.nvim",
+  version = "*",
+  dependencies = "nvim-tree/nvim-web-devicons",
+  config = function()
+    require("bufferline").setup({
       options = {
         mode = "buffers",
         diagnostics = "nvim_lsp",
@@ -11,15 +12,15 @@ return {
             filetype = "neo-tree",
             text = "File Explorer",
             text_align = "left",
-            separator = true
-          }
+            separator = true,
+          },
         },
         separator_style = "slope",
         indicator = {
-          icon = '▎',
-          style = 'icon',
+          icon = "▎",
+          style = "icon",
         },
       },
-    }
+    })
   end,
 }

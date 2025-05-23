@@ -1,9 +1,9 @@
 return {
-  'nvim-lualine/lualine.nvim',
+  "nvim-lualine/lualine.nvim",
   config = function()
-    require('lualine').setup({
+    require("lualine").setup({
       options = {
-        theme = 'auto',
+        theme = "auto",
         opts = function(_, opts)
           local trouble = require("trouble")
           local symbols = trouble.statusline({
@@ -19,7 +19,7 @@ return {
             cond = symbols.has,
           })
         end,
-      }
+      },
     })
-  end
+  end,
 }

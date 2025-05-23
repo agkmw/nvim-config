@@ -4,7 +4,7 @@ return {
     opts = {},
     config = function()
       require("mason").setup()
-    end
+    end,
   },
   {
     "mason-org/mason-lspconfig.nvim",
@@ -27,14 +27,7 @@ return {
       "mason-org/mason-lspconfig.nvim",
     },
     config = function()
-      local capabilities = require('cmp_nvim_lsp').default_capabilities()
-
-      vim.lsp.config("lua_ls", {
-        capabilities = capabilities,
-        settings = {
-          ["lua_ls"] = {},
-        },
-      })
+      local capabilities = require("cmp_nvim_lsp").default_capabilities()
       vim.lsp.config("ts_ls", {
         capabilities = capabilities,
         settings = {
@@ -42,5 +35,5 @@ return {
         },
       })
     end,
-  }
+  },
 }

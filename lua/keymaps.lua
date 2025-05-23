@@ -1,7 +1,7 @@
 vim.api.nvim_create_autocmd("LspAttach", {
   callback = function(args)
-    local bufnr = args.bufnr
-    local opts = { buffer = bufnr }
+    local buf = args.buf
+    local opts = { buffer = buf }
 
     vim.keymap.set("n", "<S-k>", vim.lsp.buf.hover, opts)
     vim.keymap.set("i", "<C-h>", vim.lsp.buf.signature_help, opts)
@@ -48,8 +48,8 @@ vim.keymap.set(
 vim.keymap.set("n", "Y", "yg$", { desc = "Yank to end of line" })
 
 -- Move selected text down/up
-vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move selection down" })
-vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move selection up" })
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { silent = true, desc = "Move selection down" })
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { silent = true, desc = "Move selection up" })
 
 -- Append line below to current line with cursor position preserved
 vim.keymap.set("n", "J", "mzJ`z", { desc = "Join lines (keep cursor)" })

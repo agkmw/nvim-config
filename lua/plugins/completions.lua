@@ -16,6 +16,16 @@ return {
 			require("luasnip.loaders.from_vscode").lazy_load()
 
 			cmp.setup({
+				formatting = {
+					format = function(_, vim_item)
+						local MAX_LABEL_WIDTH = 40
+						local label = vim_item.abbr
+						local truncated = (#label > MAX_LABEL_WIDTH) and (label:sub(1, MAX_LABEL_WIDTH - 1) .. "…")
+							or label
+						vim_item.abbr = truncated
+						return vim_item
+					end,
+				},
 				snippet = {
 					expand = function(args)
 						require("luasnip").lsp_expand(args.body)

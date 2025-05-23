@@ -42,37 +42,54 @@ vim.opt.encoding = "utf-8"
 vim.opt.fileencoding = "utf-8"
 
 if vim.fn.has("win32") == 1 or vim.fn.has("win64") == 1 then
-	vim.o.shell = "pwsh.exe"
-	vim.o.shellcmdflag = "-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command"
+  vim.o.shell = "pwsh.exe"
+  vim.o.shellcmdflag = "-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command"
 end
 
 vim.diagnostic.enable = true
 vim.diagnostic.config({
-	virtual_text = true,
-	float = true,
-	update_in_insert = true,
+  virtual_text = true,
+  float = true,
+  update_in_insert = true,
 })
 
 vim.api.nvim_create_autocmd("TextYankPost", {
-	desc = "Highlight when yanking (copying) text",
-	group = vim.api.nvim_create_augroup("kickstart-highlight-yank", { clear = true }),
-	callback = function()
-		vim.hl.on_yank()
-	end,
+  desc = "Highlight when yanking (copying) text",
+  group = vim.api.nvim_create_augroup("kickstart-highlight-yank", { clear = true }),
+  callback = function()
+    vim.hl.on_yank()
+  end,
 })
 
 vim.api.nvim_create_autocmd("FileType", {
-	pattern = {
-		"help",
-		"alpha",
-		"dashboard",
-		"neo-tree",
-		"Trouble",
-		"lazy",
-		"mason",
-		"notify",
-	},
-	callback = function()
-		vim.b.miniindentscope_disable = true
-	end,
+  pattern = {
+    "help",
+    "alpha",
+    "dashboard",
+    "neo-tree",
+    "Trouble",
+    "lazy",
+    "mason",
+    "notify",
+  },
+  callback = function()
+    vim.b.miniindentscope_disable = true
+  end,
+})
+
+vim.api.nvim_create_autocmd("LspAttach", {
+  callback = function(args)
+    local excluded_filetypes = { "text", "log" }
+    local buf = args.buf
+    local ft = vim.bo[buf].filetype
+
+    if vim.tbl_contains(excluded_filetypes, ft) then
+      local client = vim.lsp.get_client_by_id(args.data.client_id)
+      vim.schedule(function()
+        if client ~= nil then
+          vim.lsp.buf_detach_client(buf, client.id)
+        end
+      end)
+    end
+  end,
 })

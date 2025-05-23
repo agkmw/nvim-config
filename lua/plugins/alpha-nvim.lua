@@ -3,13 +3,13 @@ math.randomseed(os.time())
 local function get_buttons()
   local dashboard = require("alpha.themes.dashboard")
   return {
-    dashboard.button("e", "  New file",               ":tabnew<CR>"),
-    dashboard.button("f", "󰈞  Find file",              ":Telescope find_files<CR>"),
-    dashboard.button("h", "󰊄  Recently opened files",  ":Telescope oldfiles<CR>"),
-    dashboard.button("r", "  Frecency/MRU",           ":Telescope oldfiles<CR>"),
-    dashboard.button("g", "󰈬  Find word",              ":Telescope live_grep<CR>"),
-    dashboard.button("m", "  Jump to bookmarks",      ":Telescope marks<CR>"),
-    dashboard.button("l", "  Open last session",      ":source ~/.config/nvim/session.vim<CR>"),
+    dashboard.button("e", "  New file", ":tabnew<CR>"),
+    dashboard.button("f", "󰈞  Find file", ":Telescope find_files<CR>"),
+    dashboard.button("h", "󰊄  Recently opened files", ":Telescope oldfiles<CR>"),
+    dashboard.button("r", "  Frecency/MRU", ":Telescope oldfiles<CR>"),
+    dashboard.button("g", "󰈬  Find word", ":Telescope live_grep<CR>"),
+    dashboard.button("m", "  Jump to bookmarks", ":Telescope marks<CR>"),
+    dashboard.button("l", "  Open last session", ":source ~/.config/nvim/session.vim<CR>"),
   }
 end
 
@@ -420,14 +420,14 @@ local function dashboard_config()
     { type = "padding", val = 1 },
     dashboard.section.footer,
   }
-  require'alpha'.setup(dashboard.config)
+  require("alpha").setup(dashboard.config)
 end
 
 return {
-  'goolord/alpha-nvim',
+  "goolord/alpha-nvim",
   dependencies = {
-    'echasnovski/mini.icons',
-    'nvim-lua/plenary.nvim'
+    "echasnovski/mini.icons",
+    "nvim-lua/plenary.nvim",
   },
   config = dashboard_config,
 }
