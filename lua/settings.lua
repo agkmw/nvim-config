@@ -47,11 +47,17 @@ if vim.fn.has("win32") == 1 or vim.fn.has("win64") == 1 then
 end
 
 vim.diagnostic.enable = true
-vim.diagnostic.config({
-  virtual_text = true,
-  float = true,
-  update_in_insert = true,
-})
+vim.keymap.set('n', '<leader>od', function()
+  vim.diagnostic.config({ virtual_lines = { current_line = true }, virtual_text = false })
+
+  vim.api.nvim_create_autocmd('CursorMoved', {
+    group = vim.api.nvim_create_augroup('line-diagnostics', { clear = true }),
+    callback = function()
+      vim.diagnostic.config({ virtual_lines = false, virtual_text = true })
+      return true
+    end,
+  })
+end)
 
 vim.api.nvim_create_autocmd("TextYankPost", {
   desc = "Highlight when yanking (copying) text",
