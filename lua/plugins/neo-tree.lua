@@ -26,9 +26,18 @@ return {
             },
           },
         },
-        width = 40,
+        width = 30,
       },
       filesystem = {
+        filtered_items = {
+          visible = true,
+          hide_dotfiles = true,
+          hide_gitignored = true,
+          hide_hidden = true,
+          hide_by_name = {
+            --"node_modules"
+          },
+        },
         follow_current_file = {
           enabled = true,
           leave_dirs_open = false,

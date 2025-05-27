@@ -1,26 +1,27 @@
 vim.api.nvim_create_autocmd("LspAttach", {
-  callback = function(args)
-    local buf = args.buf
-    local opts = { buffer = buf }
+	callback = function(args)
+		local buf = args.buf
+		local opts = { buffer = buf }
 
-    vim.keymap.set("n", "<S-k>", vim.lsp.buf.hover, opts)
-    vim.keymap.set("i", "<C-h>", vim.lsp.buf.signature_help, opts)
-    vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
-    vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts)
-    vim.keymap.set("n", "<leader>crn", vim.lsp.buf.rename, opts)
-    vim.keymap.set("n", "<leader>crf", vim.lsp.buf.references, opts)
-    vim.keymap.set("n", "<leader>vws", vim.lsp.buf.workspace_symbol, opts)
-    vim.keymap.set("n", "<leader>vds", vim.lsp.buf.document_symbol, opts)
-  end,
+		vim.keymap.set("n", "<S-k>", vim.lsp.buf.hover, opts)
+		vim.keymap.set("i", "<C-h>", vim.lsp.buf.signature_help, opts)
+		vim.keymap.set("n", "<S-h>", vim.lsp.buf.signature_help, opts)
+		vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+		vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts)
+		vim.keymap.set("n", "<leader>crn", vim.lsp.buf.rename, opts)
+		vim.keymap.set("n", "<leader>crf", vim.lsp.buf.references, opts)
+		vim.keymap.set("n", "<leader>vws", vim.lsp.buf.workspace_symbol, opts)
+		vim.keymap.set("n", "<leader>vds", vim.lsp.buf.document_symbol, opts)
+	end,
 })
 
 -- todo-comments
 vim.keymap.set("n", "]t", function()
-  require("todo-comments").jump_next()
+	require("todo-comments").jump_next()
 end, { desc = "Next todo comment" })
 
 vim.keymap.set("n", "[t", function()
-  require("todo-comments").jump_prev()
+	require("todo-comments").jump_prev()
 end, { desc = "Previous todo comment" })
 
 -- Navigate between windows
@@ -38,10 +39,10 @@ vim.keymap.set("n", "<S-Tab>", "<cmd>BufferLineCyclePrev<CR>", { desc = "Previou
 
 -- Replace the word under cursor
 vim.keymap.set(
-  "n",
-  "<leader>s",
-  ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>",
-  { desc = "Substitute word under cursor" }
+	"n",
+	"<leader>s",
+	":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>",
+	{ desc = "Substitute word under cursor" }
 )
 
 -- Yank from cursor to end of line (like D/C)
@@ -82,11 +83,11 @@ vim.keymap.set("n", "Q", "<nop>", { desc = "Disable Ex mode" })
 
 -- Format current buffer
 vim.keymap.set("n", "<leader>f", function()
-  vim.lsp.buf.format()
+	vim.lsp.buf.format()
 end, { desc = "Format buffer with LSP" })
 
 -- Quickfix and location list navigation
-vim.keymap.set("n", "<S-k>", "<cmd>cnext<CR>zz", { desc = "Next quickfix item" })
+vim.keymap.set("n", "<S-l>", "<cmd>cnext<CR>zz", { desc = "Next quickfix item" })
 vim.keymap.set("n", "<S-j>", "<cmd>cprev<CR>zz", { desc = "Previous quickfix item" })
 vim.keymap.set("n", "<S-d>", "<cmd>lnext<CR>zz", { desc = "Next location list item" })
 vim.keymap.set("n", "<S-s>", "<cmd>lnext<CR>zz", { desc = "Next location list item" })
@@ -106,16 +107,20 @@ vim.keymap.set("n", "<leader>bdf", ":bd!<CR>", { desc = "Force close buffer" })
 vim.keymap.set("n", "<leader>bdn", ":bd<CR>", { desc = "Force close buffer" })
 
 vim.api.nvim_create_autocmd("TermOpen", {
-  group = vim.api.nvim_create_augroup("custom-term-open", { clear = true }),
-  callback = function()
-    vim.opt.number = false
-    vim.opt.relativenumber = false
-  end,
+	group = vim.api.nvim_create_augroup("custom-term-open", { clear = true }),
+	callback = function()
+		vim.opt.number = false
+		vim.opt.relativenumber = false
+	end,
 })
 
 vim.keymap.set("n", "<leader>st", function()
-  vim.cmd.vnew()
-  vim.cmd.term()
-  vim.cmd.wincmd("J")
-  vim.api.nvim_win_set_height(0, 10)
+	vim.cmd.vnew()
+	vim.cmd.term()
+	vim.cmd.wincmd("J")
+	vim.api.nvim_win_set_height(0, 10)
 end)
+
+vim.keymap.set("i", "<C-]>", "<C-w>", { desc = "Delete previous word" })
+vim.keymap.set("n", "-", "<CMD>Oil --float<CR>", { desc = "Open parent directory"} )
+vim.keymap.set("n", "<leader>mo", ":lua MiniFiles.open(vim.api.nvim_buf_get_name(0))<CR>", { desc = "Open "})

@@ -4,6 +4,11 @@ return {
   config = function()
     require("mini.surround").setup()
     require("mini.pairs").setup()
+    require("mini.files").setup({
+      windows = {
+        preview = true,
+      },
+    })
     local indentscope = require("mini.indentscope")
     indentscope.setup({
       draw = {

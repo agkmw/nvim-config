@@ -15,10 +15,9 @@ return {
             separator = true,
           },
         },
-        separator_style = "slope",
+        separator_style = "thick",
         indicator = {
-          icon = "▎",
-          style = "icon",
+          style = "underline",
         },
       },
     })
