@@ -10,7 +10,7 @@ return {
   config = function()
     vim.keymap.set(
       "n",
-      "<leader>e",
+      "<leader>et",
       ":Neotree filesystem toggle left<CR>",
       { silent = true, desc = "Toggle Neo-tree" }
     )
@@ -26,7 +26,7 @@ return {
             },
           },
         },
-        width = 30,
+        width = 40,
       },
       filesystem = {
         filtered_items = {

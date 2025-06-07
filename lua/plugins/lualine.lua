@@ -3,6 +3,8 @@ return {
   config = function()
     require("lualine").setup({
       options = {
+        section_separators = '',
+        component_separators = '|',
         theme = "auto",
         opts = function(_, opts)
           local trouble = require("trouble")

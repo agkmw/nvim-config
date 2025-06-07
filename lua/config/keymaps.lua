@@ -30,7 +30,7 @@ vim.keymap.set("n", "<C-l>", "<C-w>l", { desc = "Move to right window" })
 vim.keymap.set("n", "<C-k>", "<C-w>k", { desc = "Move to upper window" })
 vim.keymap.set("n", "<C-j>", "<C-w>j", { desc = "Move to lower window" })
 vim.keymap.set("n", "<C-m>", "<C-w><S-t>", { desc = "Maximize the window" })
-vim.keymap.set("n", "<leader>t", "gt", { desc = "Move to another tab" })
+vim.keymap.set("n", "<leader><Tab>", "gt", { desc = "Move to another tab" })
 vim.keymap.set("n", "<leader>rw", "<C-w>r<C-w>w", { desc = "Rotate windows and switch focus" })
 
 -- Navigate through buffers
@@ -82,15 +82,15 @@ vim.keymap.set("i", "<C-c>", "<Esc>", { desc = "Exit insert mode" })
 vim.keymap.set("n", "Q", "<nop>", { desc = "Disable Ex mode" })
 
 -- Format current buffer
-vim.keymap.set("n", "<leader>f", function()
-	vim.lsp.buf.format()
-end, { desc = "Format buffer with LSP" })
+-- vim.keymap.set("n", "<leader>f", function()
+-- 	vim.lsp.buf.format()
+-- end, { desc = "Format buffer with LSP" })
 
 -- Quickfix and location list navigation
 vim.keymap.set("n", "<S-l>", "<cmd>cnext<CR>zz", { desc = "Next quickfix item" })
 vim.keymap.set("n", "<S-j>", "<cmd>cprev<CR>zz", { desc = "Previous quickfix item" })
 vim.keymap.set("n", "<S-d>", "<cmd>lnext<CR>zz", { desc = "Next location list item" })
-vim.keymap.set("n", "<S-s>", "<cmd>lnext<CR>zz", { desc = "Next location list item" })
+vim.keymap.set("n", "<S-s>", "<cmd>lprev<CR>zz", { desc = "Previous location list item" })
 
 -- Make current file executable
 vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true, desc = "Make file executable" })
@@ -100,8 +100,9 @@ vim.keymap.set("n", "<leader>co", "<C-w>o", { desc = "Close all windows and focu
 vim.keymap.set("n", "<leader>cw", "<C-w>c", { desc = "Close window" })
 vim.keymap.set("n", "<leader>w", "<C-w>w", { desc = "Move to another window" })
 
-vim.keymap.set("t", "<Esc>", "<C-\\><C-n>", { desc = "Exit terminal to Normal mode" })
+vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal to Normal mode" })
 vim.keymap.set("t", "<C-q>", "<Esc>", { desc = "Send Esc to terminal" })
+vim.keymap.set("n", "<leader><leader>q", ":q<CR>", { silent = true, desc = "Quit" })
 
 vim.keymap.set("n", "<leader>bdf", ":bd!<CR>", { desc = "Force close buffer" })
 vim.keymap.set("n", "<leader>bdn", ":bd<CR>", { desc = "Force close buffer" })

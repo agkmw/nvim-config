@@ -404,7 +404,7 @@ local function get_random_header()
     },
   }
   -- return headers[math.random(#headers)]
-  return headers[3]
+  return headers[7]
 end
 
 local function dashboard_config()
