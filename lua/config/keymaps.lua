@@ -124,4 +124,4 @@ end)
 
 vim.keymap.set("i", "<C-]>", "<C-w>", { desc = "Delete previous word" })
 vim.keymap.set("n", "-", "<CMD>Oil --float<CR>", { desc = "Open parent directory"} )
-vim.keymap.set("n", "<leader>mo", ":lua MiniFiles.open(vim.api.nvim_buf_get_name(0))<CR>", { desc = "Open "})
+vim.keymap.set("n", "<leader>mo", ":lua MiniFiles.open(vim.api.nvim_buf_get_name(0))<CR>", { silent = true, desc = "Open"})
