@@ -9,11 +9,11 @@ return {
         preview = true,
       },
     })
-    local indentscope = require("mini.indentscope")
-    indentscope.setup({
-      draw = {
-        animation = indentscope.gen_animation.linear({ duration = 100, unit = "total" }),
-      },
-    })
+    -- local indentscope = require("mini.indentscope")
+    -- indentscope.setup({
+    --   draw = {
+    --     animation = indentscope.gen_animation.linear({ duration = 100, unit = "total" }),
+    --   },
+    -- })
   end,
 }

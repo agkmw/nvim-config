@@ -43,6 +43,11 @@ return {
 					cwd = vim.fs.joinpath(vim.fn.stdpath("data"), "lazy"),
 				})
 			end)
+      vim.keymap.set("n", "<leader>es", function ()
+        builtin.find_files({
+          cwd = vim.fs.abspath("~/code/notes")
+        })
+      end, { desc = "Telescope find note files"})
 			vim.keymap.set("n", "<leader>fs", builtin.live_grep, { desc = "Telescope live grep" })
 			vim.keymap.set("n", "<leader>fb", builtin.buffers, { desc = "Telescope buffers" })
 

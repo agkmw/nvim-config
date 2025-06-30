@@ -9,7 +9,7 @@ local function get_buttons()
     dashboard.button("r", "  Frecency/MRU", ":Telescope oldfiles<CR>"),
     dashboard.button("g", "󰈬  Find word", ":Telescope live_grep<CR>"),
     dashboard.button("m", "  Jump to bookmarks", ":Telescope marks<CR>"),
-    dashboard.button("l", "  Open last session", ":source ~/.config/nvim/session.vim<CR>"),
+    -- dashboard.button("l", "  Open last session", ":source ~/.config/nvim/session.vim<CR>"),
   }
 end
 
@@ -44,9 +44,6 @@ local function get_random_header()
       [[         *                                                                  ]],
     },
     {
-      [[                                                                       ]],
-      [[                                                                       ]],
-      [[                                                                       ]],
       [[                                                                       ]],
       [[                                                                     ]],
       [[       ████ ██████           █████      ██                     ]],

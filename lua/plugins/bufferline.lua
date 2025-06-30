@@ -11,13 +11,15 @@ return {
           {
             filetype = "neo-tree",
             text = "File Explorer",
-            text_align = "left",
+            text_align = "center",
             separator = true,
           },
         },
-        separator_style = "slope",
+        separator_style = "thick",
         indicator = {
-          style = "underline",
+          -- icon = '▎',
+          -- style = 'icon',
+          style = 'underline',
         },
       },
     })
