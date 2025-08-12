@@ -11,7 +11,7 @@ return {
     vim.keymap.set(
       "n",
       "<leader>et",
-      ":Neotree filesystem toggle left<CR>",
+      ":Neotree filesystem toggle right<CR>",
       { silent = true, desc = "Toggle Neo-tree" }
     )
 

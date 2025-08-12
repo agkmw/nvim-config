@@ -7,14 +7,14 @@ vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
 vim.opt.smartindent = true
 
-vim.opt.scrolloff = 8
+vim.opt.scrolloff = 12
 
 vim.opt.guicursor = ""
 vim.opt.cursorline = true
 vim.opt.termguicolors = true
 
-vim.opt.nu = true
-vim.opt.relativenumber = true
+vim.opt.nu = false
+vim.opt.relativenumber = false
 
 -- vim.opt.colorcolumn = "80"
 

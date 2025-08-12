@@ -9,9 +9,11 @@ return {
 		config = function()
 			require("telescope").setup({
 				pickers = {
-					find_files = {
-						theme = "ivy",
-					},
+					find_files = require("telescope.themes").get_ivy({
+                        layout_config = {
+                            preview_cutoff = 1,
+                        }
+					}),
 				},
 				extensions = {
 					fzf = {},
@@ -43,15 +45,15 @@ return {
 					cwd = vim.fs.joinpath(vim.fn.stdpath("data"), "lazy"),
 				})
 			end)
-      vim.keymap.set("n", "<leader>es", function ()
-        builtin.find_files({
-          cwd = vim.fs.abspath("~/code/notes")
-        })
-      end, { desc = "Telescope find note files"})
+			vim.keymap.set("n", "<leader>es", function()
+				builtin.find_files({
+					cwd = vim.fs.abspath("~/code/notes"),
+				})
+			end, { desc = "Telescope find note files" })
 			vim.keymap.set("n", "<leader>fs", builtin.live_grep, { desc = "Telescope live grep" })
 			vim.keymap.set("n", "<leader>fb", builtin.buffers, { desc = "Telescope buffers" })
 
-      require("plugins.telescope.multigrep").setup()
+			require("plugins.telescope.multigrep").setup()
 		end,
 	},
 	{

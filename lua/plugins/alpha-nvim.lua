@@ -401,7 +401,7 @@ local function get_random_header()
     },
   }
   -- return headers[math.random(#headers)]
-  return headers[7]
+  return headers[8]
 end
 
 local function dashboard_config()
@@ -410,12 +410,18 @@ local function dashboard_config()
   dashboard.section.buttons.val = get_buttons()
   dashboard.section.footer.val = get_footer()
   dashboard.config.layout = {
-    { type = "padding", val = 2 },
+    -- { type = "padding", val = 2 },
+    -- dashboard.section.header,
+    -- { type = "padding", val = 2 },
+    -- dashboard.section.buttons,
+    -- { type = "padding", val = 1 },
+    -- dashboard.section.footer,
+    { type = "padding", val = 1 },
     dashboard.section.header,
     { type = "padding", val = 2 },
-    dashboard.section.buttons,
-    { type = "padding", val = 1 },
     dashboard.section.footer,
+    { type = "padding", val = 2 },
+    dashboard.section.buttons,
   }
   require("alpha").setup(dashboard.config)
 end

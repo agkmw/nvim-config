@@ -41,7 +41,7 @@ return {
 		config = function()
 			require("mason-tool-installer").setup({
 				ensure_installed = {
-					"eslint_d",
+					-- "eslint_d",
 					"stylua",
 					"prettier",
           "php-cs-fixer",
@@ -52,4 +52,26 @@ return {
 			})
 		end,
 	},
+    {
+        "stevearc/conform.nvim",
+        lazy = true,
+        event = { "BufReadPre", "BufNewFile" },
+        opts = {
+            formatters_by_ft = {
+                php = { "php-cs-fixer" },
+            },
+            formatters = {
+                ["php-cs-fixer"] = {
+                    command = "php-cs-fixer",
+                    args = {
+                        "fix",
+                        "--rules=@PSR12", -- Formatting preset. Other presets are available, see the php-cs-fixer docs.
+                        "$FILENAME",
+                    },
+                    stdin = false,
+                },
+            },
+            notify_on_error = true,
+        },
+    }
 }
